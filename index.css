@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: o;
+    box-sizing: border-box;
+}
+
+div {
+    padding: 10px
+}
+section {
+    width: 90%;
+    height: auto;
+    margin: auto auto;
+    border: solid 1px gray;
+    padding: 30px;
+}
+
+h1 {
+    height: 50px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center
+}
+
+.intro-text {
+    padding: 10px;
+    border: solid 1px black;
+    text-align: center;
+    margin-left: 33%;
+    margin-right: 33%;
+}
+
+li {
+    list-style: none;
+
+}
+
+ul {
+    margin: auto auto
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    text-justify: left;
+    width: 33%;
+    margin: auto auto
+}
+
+strong {
+    justify-content: center;
+}
