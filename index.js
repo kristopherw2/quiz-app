@@ -1,3 +1,11 @@
+
+// will track what question user is on
+let questionNumber = 0;
+
+//will track the amount of questions answered correct for user
+let score = 0;
+
+//array containing questions
 const QUESTIONS = [
     {
         questionText: "What is the technical name for a sumo wrestler?",
@@ -65,8 +73,55 @@ function selectView() {
     }
 }
 
+//start the quiz
+function startQuiz() {
+    //this should start the quiz and generate the first question
+}
+
+function generateQuestion() {
+    if (questionNumber < QUESTIONS.length) {
+        return `<div class="questions-${questionNumber}">
+     <section id="question-view">
+         <h2>${QUESTIONS[questionNumber].questionText}</h2>
+         <ul>
+             <form>
+                 <fieldset>
+                     <li>
+                         <label name="question-answers" for="answer-1">
+                             <input type="radio" name="choice" id="answer-1" value="${QUESTIONS[questionNumber].answers[0]}">
+                             <span>${QUESTIONS[questionNumber].answers[0]}</span>
+                         </label>
+                     </li>
+                     <li>
+                         <label name="question-answers" for="answer-2">
+                             <input type="radio" name="choice" id="answer-2" value="${QUESTIONS[questionNumber].answers[1]}">
+                             <span>${QUESTIONS[questionNumber].answers[1]}</span>
+                         </label>
+                     </li>
+                     <li>
+                         <label name="question-answers" for="answer-3" value="${QUESTIONS[questionNumber].answers[2]}">
+                             <input type="radio" name="choice" id="answer-3">
+                             <span>${QUESTIONS[questionNumber].answers[2]}</span>
+                         </label>
+                     </li>
+                     <li>
+                         <label name="question-answers" for="answer-4" value="${QUESTIONS[questionNumber].answers[3]}">
+                             <input type="radio" name="choice" id="answer-4">
+                             <span>${QUESTIONS[questionNumber].answers[3]}</span>
+                         </label>
+                     </li>
+                     <input type="submit" value="Submit Your Answer">
+                 </fieldset>
+             </form>
+         </ul>
+     </section>
+ </div>`
+    }
+}
+
+
 function main() {
-    //selectView();
+    startQuiz();
 }
 
 $(main);
