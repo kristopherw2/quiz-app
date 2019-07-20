@@ -52,6 +52,6 @@ form {
     margin: auto auto
 }
 
-strong {
-    justify-content: center;
+#question-view {
+    display: none;
 }

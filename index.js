@@ -30,12 +30,12 @@ const QUESTIONS = [
     {
         questionText: "What is the highest rank a sumo wrestler can obtain?",
         answers: ['Ozeki', 'Maegashira', 'Komusubi', 'Yokozuna'],
-        correctAnswer: '3'
+        correctAnswer: 'Yokozuna'
     },
     {
         questionText: "What is the name of the belt a sumo wrestler wears?",
         answers: ['Gendai budo', 'Mawashi', 'Rikishi', 'Kimarite'],
-        correctAnswer: '3'
+        correctAnswer: 'Mawashi'
     },
 ];
 
@@ -75,13 +75,18 @@ function selectView() {
 
 //start the quiz
 function startQuiz() {
-    //this should start the quiz and generate the first question
+    $('.start-view').on('click', '.start-button', function(event){
+        $('.start-view').remove();
+        $('#question-view').css('display', 'block')
+    });
 }
 
+
+//generates the questions
 function generateQuestion() {
     if (questionNumber < QUESTIONS.length) {
         return `<div class="questions-${questionNumber}">
-     <section id="question-view">
+     <section>
          <h2>${QUESTIONS[questionNumber].questionText}</h2>
          <ul>
              <form>
@@ -120,8 +125,14 @@ function generateQuestion() {
 }
 
 
+//render questions to the dom
+function renderQuestion(){
+    $('#question-view').html(generateQuestion());
+}
+
 function main() {
     startQuiz();
+    renderQuestion();
 }
 
 $(main);
