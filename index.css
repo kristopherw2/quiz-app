@@ -55,3 +55,8 @@ form {
 #question-view {
     display: none;
 }
+
+.image-answers{
+    height: 200px;
+    width: auto;
+}

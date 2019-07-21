@@ -5,11 +5,21 @@ let questionNumber = 0;
 //will track the amount of questions answered correct for user
 let score = 0;
 
+function updateQuestionNumber() {
+    questionNumber++
+    console.log(questionNumber);
+}
+
+//increases score
+function addScore() {
+    score++;
+}
+
 //array containing questions
 const QUESTIONS = [
     {
         questionText: "What is the technical name for a sumo wrestler?",
-        answers: ['Rikishi', 'Dohyo', 'Sumo', 'Wrestler'],
+        answers: ['Yokozuna', 'Dohyo', 'Sumo', 'Rikishi'],
         correctAnswer: 'Rikishi',
     },
     {
@@ -24,7 +34,7 @@ const QUESTIONS = [
     },
     {
         questionText: "What is the name of the ring a sumo wrestler competes in?",
-        answers: ['Goji', 'Maegashira', 'Dohyo', 'Kimono'],
+        answers: ['Dohyo', 'Maegashira', 'Genji', 'Kimono'],
         correctAnswer: 'Dohyo'
     },
     {
@@ -39,43 +49,58 @@ const QUESTIONS = [
     },
 ];
 
-const STORE = {
-    //the current view that we are on
-    currentView: "question",
-    // the current quesiton we are on
-    currentQuestion: 0,
-    //Number of questions answered correct
-    correctAnswer: 0,
-    //Number of questions answered incorrectly
-    incorrectAnswers: 0,
-    //the answer selected by use for the current question if they have chosen one
-    currentAnswer: ""
-}
+const imageStore = [
+    {
+        image: 'https://i.imgur.com/HXvNcxf.jpg',
+        description: 'a picture of a rikishi'
+    },
+    {
+        image: 'https://i.imgur.com/LmuepqM.jpg',
+        description: 'a picture of two rikishi wrestling'
+    },
+    {
+        image: 'https://i.imgur.com/uL0mnSy.jpg',
+        description: 'a picture of a rikishi eating chankonabe'
+    },
+    {
+        image: 'https://i.imgur.com/ivJiiOs.jpg',
+        description: 'a picture of a dohyo'
+    },
+    {
+        image: 'https://i.imgur.com/9RfnLUZ.jpg',
+        description: 'a picture of yokozuna kakuryu'
+    },
+    {
+        image: 'https://i.imgur.com/Slqgb7o.jpg',
+        description: 'a picture of a rikishi wearing a mawashi'
+    },
+]
 
-// selects current view
-function selectView() {
-    const currentView = STORE.currentView
-    $('section').hide()
+// // selects current view
+// function selectView() {
+//     const currentView = STORE.currentView
+//     $('section').hide()
 
-    switch (currentView) {
-        case 'intro':
-            $('#start-view').show()
-            break;
-        case 'question':
-            $('#question-view').show()
-            break;
-        case 'feedback':
-            $('#feedback-view').show()
-            break;
-        case 'final':
-            $('#final-view').show()
-            break;
-    }
-}
+//     switch (currentView) {
+//         case 'intro':
+//             $('#start-view').show()
+//             break;
+//         case 'question':
+//             $('#question-view').show()
+//             break;
+//         case 'feedback':
+//             $('#feedback-view').show()
+//             break;
+//         case 'final':
+//             $('#final-view').show()
+//             break;
+//     }
+// }
 
 //start the quiz
 function startQuiz() {
-    $('.start-view').on('click', '.start-button', function(event){
+    $('.start-view').on('click', '.start-button', function (event) {
+        event.preventDefault();
         $('.start-view').remove();
         $('#question-view').css('display', 'block')
     });
@@ -92,47 +117,104 @@ function generateQuestion() {
              <form>
                  <fieldset>
                      <li>
-                         <label name="question-answers" for="answer-1">
-                             <input type="radio" name="choice" id="answer-1" value="${QUESTIONS[questionNumber].answers[0]}">
+                         <label name="question-answers">
+                             <input type="radio" name="choice" value="${QUESTIONS[questionNumber].answers[0]}" required>
                              <span>${QUESTIONS[questionNumber].answers[0]}</span>
                          </label>
                      </li>
                      <li>
-                         <label name="question-answers" for="answer-2">
-                             <input type="radio" name="choice" id="answer-2" value="${QUESTIONS[questionNumber].answers[1]}">
+                         <label name="question-answers">
+                             <input type="radio" name="choice" value="${QUESTIONS[questionNumber].answers[1]}" required>
                              <span>${QUESTIONS[questionNumber].answers[1]}</span>
                          </label>
                      </li>
                      <li>
-                         <label name="question-answers" for="answer-3" value="${QUESTIONS[questionNumber].answers[2]}">
-                             <input type="radio" name="choice" id="answer-3">
-                             <span>${QUESTIONS[questionNumber].answers[2]}</span>
-                         </label>
-                     </li>
-                     <li>
-                         <label name="question-answers" for="answer-4" value="${QUESTIONS[questionNumber].answers[3]}">
-                             <input type="radio" name="choice" id="answer-4">
-                             <span>${QUESTIONS[questionNumber].answers[3]}</span>
-                         </label>
-                     </li>
-                     <input type="submit" value="Submit Your Answer">
+                     <label name="question-answers">
+                         <input type="radio" name="choice" value="${QUESTIONS[questionNumber].answers[2]}" required>
+                         <span>${QUESTIONS[questionNumber].answers[2]}</span>
+                     </label>
+                 </li>
+                 <li>
+                 <label name="question-answers">
+                     <input type="radio" name="choice" value="${QUESTIONS[questionNumber].answers[3]}" required>
+                     <span>${QUESTIONS[questionNumber].answers[3]}</span>
+                 </label>
+             </li>
+                     <input class="answer-submit" type="submit" value="Submit Your Answer">
                  </fieldset>
              </form>
          </ul>
      </section>
  </div>`
+    } else {
+        renderResults();
     }
 }
 
-
 //render questions to the dom
-function renderQuestion(){
+function renderQuestion() {
     $('#question-view').html(generateQuestion());
 }
+//handles the user selection and submit for questions
+function answerSelectedAndSubmitted() {
+    $('form').on('submit', function (event) {
+        event.preventDefault();
+        let userAnswer = $('input:checked');
+        let answerToCheck = userAnswer.val();
+        let correctAnswer = `${QUESTIONS[questionNumber].correctAnswer}`
+        if (answerToCheck === correctAnswer) {
+            questionAnsweredCorrect();
+        } else {
+            questionAnsweredIncorrect();
+        }
+    });
+}
 
+//will return results if answered correct
+function questionAnsweredCorrect() {
+    $('#question-view').html(`<div class="feedback">
+    <p>You've got it right!</p>
+    <img class="image-answers" src="${imageStore[questionNumber].image}" alt="${imageStore[questionNumber].description}">
+    <button type="button" class="next-question">Next Question</button>
+</div>`)
+    addScore();
+    //console.log('Question was answered correct')
+}
+//will return incorrect answer screen
+function questionAnsweredIncorrect() {
+    $('#question-view').html(`<div class="feedback">
+    <p>You answered that incorrectly the correct answer would be ${QUESTIONS[questionNumber].correctAnswer}</p>
+    <img class="image-answers" src="${imageStore[questionNumber].image}" alt="${imageStore[questionNumber].description}">
+    <button type="button" class="next-question">Next Question</button>
+</div>`)
+    //console.log('Answer is incorrect!')
+}
+
+//will render a question after the feedback
+function renderNextQuestion() {
+    $('body').on('click', '.next-question', function () {
+        updateQuestionNumber();
+        renderQuestion();
+        answerSelectedAndSubmitted();
+        //consoleQuestionsArray();
+        //console.log("Render Next Question fired")
+    });
+}
+
+//this function should render the results of the entire quiz
+function renderResults() {
+    if (score < 6) {
+        $('#question-view').html(`<p>The End! Your score was ${score} of 6. You can do better!</p>`)
+    } else {
+        $('#question-view').html(`<p>You did perfect! You're worthy of the rank Yokozuna!`)
+    }
+}
+//callback function to render DOM
 function main() {
     startQuiz();
     renderQuestion();
+    answerSelectedAndSubmitted();
+    renderNextQuestion();
 }
 
 $(main);
