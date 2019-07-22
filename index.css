@@ -60,3 +60,15 @@ form {
     height: 200px;
     width: auto;
 }
+
+header {
+    margin: auto auto;
+    width: 100%;
+    text-align: center;
+    background-color: grey;
+}
+
+.header-icon {
+    height: 200px;
+    width: 200px;
+}

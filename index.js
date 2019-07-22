@@ -7,7 +7,13 @@ let score = 0;
 
 function updateQuestionNumber() {
     questionNumber++
-    console.log(questionNumber);
+    //$('.question-counter').text(`${questionNumber+1} of 6`);
+    //console.log(questionNumber);
+}
+
+//update quest counter txt
+function updateQuestionCounter(){
+    $('.question-counter').text(`${questionNumber+1} of 6`);
 }
 
 //increases score
@@ -103,6 +109,9 @@ function startQuiz() {
         event.preventDefault();
         $('.start-view').remove();
         $('#question-view').css('display', 'block')
+        if(questionNumber < 6){
+        $('.question-counter').text(`${questionNumber+1} of 6`);
+        }
     });
 }
 
@@ -178,6 +187,7 @@ function questionAnsweredCorrect() {
     <button type="button" class="next-question">Next Question</button>
 </div>`)
     addScore();
+$('.score-counter').text(`${score} of 6`);
     //console.log('Question was answered correct')
 }
 //will return incorrect answer screen
@@ -187,6 +197,7 @@ function questionAnsweredIncorrect() {
     <img class="image-answers" src="${imageStore[questionNumber].image}" alt="${imageStore[questionNumber].description}">
     <button type="button" class="next-question">Next Question</button>
 </div>`)
+
     //console.log('Answer is incorrect!')
 }
 
@@ -196,6 +207,9 @@ function renderNextQuestion() {
         updateQuestionNumber();
         renderQuestion();
         answerSelectedAndSubmitted();
+        if(questionNumber < 6){
+            updateQuestionCounter();
+        }
         //consoleQuestionsArray();
         //console.log("Render Next Question fired")
     });
@@ -204,10 +218,17 @@ function renderNextQuestion() {
 //this function should render the results of the entire quiz
 function renderResults() {
     if (score < 6) {
-        $('#question-view').html(`<p>The End! Your score was ${score} of 6. You can do better!</p>`)
+        $('#question-view').html(`<p>The End! Your score was ${score} of 6. You can do better!</p><button class="start-over">START OVER</button>`)
     } else {
-        $('#question-view').html(`<p>You did perfect! You're worthy of the rank Yokozuna!`)
+        $('#question-view').html(`<p>You did perfect! You're worthy of the rank Yokozuna!<button class="start-over">START OVER</button>`)
     }
+}
+
+//function to start quiz over
+function startOver(){
+    $('#question-view').on('click', '.start-over', function(){
+        location.reload();
+    });
 }
 //callback function to render DOM
 function main() {
@@ -215,6 +236,7 @@ function main() {
     renderQuestion();
     answerSelectedAndSubmitted();
     renderNextQuestion();
+    startOver();
 }
 
 $(main);
