@@ -166,3 +166,30 @@ form {
 
 }
 
+@media screen and (min-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+    .header-icon {
+        margin: 5px 0 0 10px;
+        height: 100px;
+        width: 100px;
+    }
+
+    #ul-with-counters li {
+        display: block;
+        padding: 10px;
+        font-size: 20px;
+    }
+    
+    form {
+        text-align: center;
+        width: 50%;
+        margin: auto auto;
+     }
+
+     h2 {
+        font-size: 95%;
+        text-align: center;
+    }
+
+}
+
+
