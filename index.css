@@ -164,6 +164,10 @@ form {
         text-align: center;
     }
 
+    div #start-view input {
+        margin-top: 20px;
+    }
+
 }
 
 @media screen and (max-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
@@ -181,13 +185,17 @@ form {
     
     form {
         text-align: center;
-        width: 33%;
+        width: 50%;
         margin: auto auto;
      }
 
      h2 {
         font-size: 95%;
         text-align: center;
+    }
+
+    div #start-view input {
+        margin-top: 20px;
     }
 
 }
