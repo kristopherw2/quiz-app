@@ -170,7 +170,7 @@ form {
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) {
     .header-icon {
         margin: 5px 0 0 10px;
         height: 75px;
@@ -179,7 +179,7 @@ form {
 
     #ul-with-counters li {
         display: block;
-        padding: 10px;
+        padding: 3px;
         font-size: 15px;
     }
 
@@ -187,15 +187,24 @@ form {
         text-align: center;
     }
     
+
     form {
         text-align: center;
-        width: 100%;
-        margin: auto auto;
+        width: auto;
+     }
+
+     fieldset {
+         width: 100%;
      }
 
      h2 {
         font-size: 95%;
         text-align: center;
+    }
+
+    ul {
+        padding-left: 3px;
+        margin: auto auto;
     }
 
     div #start-view input {
