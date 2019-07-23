@@ -166,7 +166,7 @@ form {
 
 }
 
-@media screen and (min-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+@media screen and (max-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
     .header-icon {
         margin: 5px 0 0 10px;
         height: 100px;
@@ -181,7 +181,7 @@ form {
     
     form {
         text-align: center;
-        width: 50%;
+        width: 33%;
         margin: auto auto;
      }
 
