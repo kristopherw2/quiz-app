@@ -4,41 +4,118 @@
     box-sizing: border-box;
 }
 
-div {
-    padding: 10px
+html { 
+    background: url(https://i.imgur.com/zQvbwfO.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: whitesmoke;
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(64, 28, 37, 1)), url(https://i.imgur.com/zQvbwfO.jpg);
+    font-family: 'Shojumaru'
+  }
+
+header {
+    margin: auto;
+    width: 100%;
+    display: inine;
 }
-section {
-    width: 90%;
-    height: auto;
-    margin: auto auto;
-    border: solid 1px gray;
-    padding: 30px;
+
+.header-icon {
+    margin: 5px 0 0 20px;
+    height: 200px;
+    width: 200px;
+}
+
+.css-button {
+    border-radius: 2px;
+    background-color: rgb(206, 153, 153);
+    color: white;
+    font-family: 'Shojumaru'
+}
+
+.css-button:hover {
+    background-color: rgba(64, 28, 37, 1)
+}
+
+div #start-view {
+    text-align: center;
+    margin-top: 5px;
+}
+
+div #start-view input {
+    margin-top: 100px;
+}
+
+.scoreCounterDiv {
+    display: inline-block;
+}
+
+#ul-with-counters li {
+    display: block;
+    padding: 20px;
+    font-size: 30px;
+}
+
+div {
+    padding: 5px
 }
 
 h1 {
     height: 50px;
     text-align: center;
+    font-family: 'Shojumaru';
+    color: whitesmoke;
+}
+
+.intro-text {
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    margin: auto auto;
 }
 
 h2 {
     text-align: center
 }
 
-.intro-text {
-    padding: 10px;
-    border: solid 1px black;
+fieldset {
+    border: none;
+}
+.css-question-list {
+text-align: left;
+}
+
+.css-question-list ul label{    
+    margin: 5px 0 0 3px;
+    display: block;
+    text-align: justify;
+}
+
+label {
+    background-color: rgb(158, 102, 102)
+}
+
+label:hover{
+    background-color: rgba(64, 28, 37, 1);
+}
+
+.answer-submit{
+    margin-top: 5px;
+}
+
+.feedback {
+    display:block;
     text-align: center;
-    margin-left: 33%;
-    margin-right: 33%;
+    margin: auto auto;
+}
+
+.next-question {
+    margin-top: 10px;
 }
 
 li {
     list-style: none;
-
-}
-
-ul {
-    margin: auto auto
 }
 
 p {
@@ -46,12 +123,12 @@ p {
 }
 
 form {
-    text-align: center;
-    text-justify: left;
-    width: 33%;
-    margin: auto auto
+   text-align: center;
+   width: 33%;
+   margin: auto auto;
 }
 
+/*Dont delete this*/
 #question-view {
     display: none;
 }
@@ -59,16 +136,32 @@ form {
 .image-answers{
     height: 200px;
     width: auto;
+    padding-bottom: 20px;
 }
 
-header {
-    margin: auto auto;
-    width: 100%;
-    text-align: center;
-    background-color: grey;
+@media screen and (max-width: 768px){
+    .header-icon {
+        margin: 5px 0 0 10px;
+        height: 100px;
+        width: 100px;
+    }
+
+    #ul-with-counters li {
+        display: block;
+        padding: 10px;
+        font-size: 20px;
+    }
+    
+    form {
+        text-align: center;
+        width: 50%;
+        margin: auto auto;
+     }
+
+     h2 {
+        font-size: 95%;
+        text-align: center;
+    }
+
 }
 
-.header-icon {
-    height: 200px;
-    width: 200px;
-}

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Merienda|Shojumaru&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <title>Sumo Quiz App</title>
 </head>
@@ -12,122 +13,33 @@
 <body>
     <header>
         <img class="header-icon" src="https://i.imgur.com/C8Rib6E.png" />
-        <div class="scoreCounterList">
-        <ul>
-            <li><span class="question-counter">test</span></li>
-            <li class="score-counter">Text for Score Counter</li>
-        </ul>
+        <div class="scoreCounterDiv">
+            <ul id="ul-with-counters">
+                <li><span class="question-counter">Question: 0/6</span></li>
+                <li class="score-counter">Score: 0</li>
+            </ul>
         </div>
     </header>
     <div class="start-view">
         <section id="start-view">
             <h1>Test Your Sumo Knowledge!</h1>
-            <p class="intro-text">Think you have what it takes to make it to the Hanbasho? Take this quiz and find out!
-            </p>
-            <p><strong>Click on the button below to start</strong></p>
-            <form action="">
-                <input class="start-button" type="submit" value="Start!">
-            </form>
+            <p class="intro-text">Think you have what it takes to make it to the Hanbasho?</p>
+            <p>Click the button below to test yourself!</p>
+            <input class="start-button css-button" type="button" value="Tachi-ai!">
         </section>
     </div>
-    <div id="question-view"></div>
-
-    <!--<div>
-        <section id="question-view">
-            <h2>Question #1</h2>
-            <p><strong>What is the traditional name for a sumo wrestler?</strong></p>
-            <ul>
-                <form>
-                    <fieldset>
-                        <li>
-                            <label for="answer-1">
-                                <input type="radio" name="choice" id="answer-1">
-                                <span>Rikishi</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="answer-2">
-                                <input type="radio" name="choice" id="answer-2">
-                                <span>Mawashi</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="answer-3">
-                                <input type="radio" name="choice" id="answer-3">
-                                <span>Kesho-mawashi</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="answer-4">
-                                <input type="radio" name="choice" id="answer-4">
-                                <span>Dohyo</span>
-                            </label>
-                        </li>
-                        <input type="submit" value="Submit Your Answer">
-                    </fieldset>
-                </form>
-            </ul>
+    <div id="question-view">
+        <section class="feedback">
+            <p>You did perfect! You're worthy of the rank Yokozuna!</p>
+                <button class="start-over css-button">START OVER</button>
         </section>
     </div>
-
-    <div>
-        <section id="feedback-view">
-            <h2>Question #1</h2>
-            <p><strong>What is the traditional name for a sumo wrestler?</strong></p>
-            <p>Correct Answer Was Rikishi</p>
-            <ul>
-                <form>
-                    <fieldset>
-                        <li>
-                            <label for="answer-1">
-                                <input type="radio" name="choice" id="answer-1">
-                                <span>Rikishi</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="answer-2">
-                                <input type="radio" name="choice" id="answer-2">
-                                <span>Mawashi</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="answer-3">
-                                <input type="radio" name="choice" id="answer-3">
-                                <span>Kesho-mawashi</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="answer-4">
-                                <input type="radio" name="choice" id="answer-4" checked="checked">
-                                <span>Dohyo</span>
-                            </label>
-                        </li>
-                        <input type="submit" value="Submit Your Answer">
-                    </fieldset>
-                </form>
-            </ul>
-        </section>
-    </div>
-    <div>
-        <section id="final view">
-            <h2>Not quite!</h2>
-            <p>You answered 2/5 correctly!</p>
-            <form action="default">
-                <input type="submit" value="Start Over!">
-            </form>
-        </section>
-    </div>-->
-
-    <!----<div class="incorrect-answer">
-        <p>You've got it wrong!</p>
-        <img src="" alt="">
-        <input type="submit" value="Next question">
-    </div>-->
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="index.js"></script>
+
+
 </body>
 
 </html>
